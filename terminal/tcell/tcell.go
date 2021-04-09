@@ -187,10 +187,9 @@ func (t *Terminal) pollEvents() {
 }
 
 // EmptyEvents() clears the queue of events.
-func (t *Terminal) EmptyEvents(ctx context.Context) {
-
+func (t *Terminal) EmptyEvents() {
 	for {
-		ev := t.events.Pull(ctx)
+		ev := t.events.Pop()
 		if ev == nil {
 			break
 		}
