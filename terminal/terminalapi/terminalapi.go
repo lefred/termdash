@@ -50,6 +50,8 @@ type Terminal interface {
 	// Returns nil when the context gets canceled.
 	Event(ctx context.Context) Event
 
+	EmptyEvents()
+
 	// Close closes the underlying terminal implementation and should be called when
 	// the terminal isn't required anymore to return the screen to a sane state.
 	Close()
