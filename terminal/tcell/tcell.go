@@ -186,6 +186,17 @@ func (t *Terminal) pollEvents() {
 	}
 }
 
+// EmptyEvents() clears the queue of events.
+func (t *Terminal) EmptyEvents(ctx context.Context) {
+
+	for {
+		ev := t.events.Pull(ctx)
+		if ev == nil {
+			break
+		}
+	}
+}
+
 // Event implements terminalapi.Terminal.Event.
 func (t *Terminal) Event(ctx context.Context) terminalapi.Event {
 	ev := t.events.Pull(ctx)
